@@ -1,0 +1,65 @@
+
+~~~~~~ ENV ~~~~~
+export usbpth=/media/usbf
+export svrIP=192.168.137.78
+
+
+~~~~~~~~~~~~~ MOUNT USB  ~~~~~~~~~~~~~~~~~~
+sudo mount /dev/sda1 $usbpth
+
+sudo umount $usbpth
+sudo mkfs.ext4 /dev/sda1
+
+lsblk | grep -i sda | grep -i part
+sudo mount /dev/sda1 $usbpth
+
+... need to link :...
+sudo ln -s $usbpth /usb
+sudo ln -s /media/usbf/efs /efs
+
+
+~~~~~~~~~~~~~ PYTHOn ~~~~~~~~~~~~~~~~~~
+    sudo apt install python3.11
+    sudo apt-get install pkg-config
+    sudo apt-get install build-essential gdb lcov pkg-config libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev lzma lzma-dev tk-dev uuid-dev zlib1g-dev 
+    sudo apt install python3.11-venv
+    python3.11 --version
+    python3.11 -m venv penv
+    . ~/penv/bin/activate
+    sudo apt-get install python3-pip
+
+~~~~~~~~~~~~~~ LAPTOP LID CLOSE ~~~~~~~~~~~~~
+    sudo vi /etc/systemd/logind.conf
+    HandleLidSwitch=ignore
+    HandleLidSwitchExternalPower=ignore
+    HandleLidSwitchDocked=ignore
+    sudo systemctl restart systemd-logind
+    sudo service systemd-logind restart
+
+~~~ google perf ~~~~
+    sudo apt-get install google-perftools libgoogle-perftools-dev
+
+~~~~ nodejs: ~~~~
+    sudo apt-get install unzip
+    curl -fsSL https://fnm.vercel.app/install | bash
+    source ~/.bashrc
+    fnm use --install-if-missing 23
+    node -v # should print `v23.5.0`
+    npm -v # should print `10.9.2`
+
+~~~~ NGINX ~~~~~
+    sudo apt update  
+    sudo apt install nginx
+
+~~~ UWSGI ~~~~
+    sudo pip install wheel
+    sudo apt-get install uwsgi
+
+~~~~ code server ~~~
+    https://github.com/coder/code-server
+    curl -fsSL https://code-server.dev/install.sh | sh
+    
+    ~~~~~~~ GO WILD ~~~~~~~
+
+
+
